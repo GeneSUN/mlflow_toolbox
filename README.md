@@ -38,7 +38,7 @@ A single execution of training code, One run contains:
 - artifacts (images, models, files)
 
 **metrics/parameters**
-```
+```python
 with mlflow.start_run(run_name="baseline_RF"):
     mlflow.log_param("n_estimators", 100)
     mlflow.log_metric("rmse", 0.12)
