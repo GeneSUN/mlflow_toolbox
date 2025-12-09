@@ -103,6 +103,7 @@ class Trainer:
             preds_df.to_csv(preds_path, index=False)
             mlflow.log_artifact(preds_path, artifact_path="predictions")
 
+            """ Register and promote the model to Production stage 
             # Log the trained model and register it
             model_info = mlflow.sklearn.log_model(
                 sk_model=model,
@@ -129,7 +130,7 @@ class Trainer:
                 )
             else:
                 print("No model versions found to promote.")
-
+            """
             print(f"Training run completed. Run ID: {run.info.run_id}")
 
 
