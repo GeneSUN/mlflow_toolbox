@@ -6,6 +6,20 @@ This guide explains
   - **MLflow pyfunc wrapper**)
 - how to deploy the model for  **batch jobs** or **API services**.  
 
+<img width="1328" height="1037" alt="Untitled" src="https://github.com/user-attachments/assets/cce8b007-1016-49b4-ba69-ad8878f10cf2" />
+
+## 📑 Table of Contents
+
+- [MLflow Deployment & Inference Guide](#mlflow-deployment--inference-guide)  
+  - [Inference Wrapper](#inference-wrapper)
+    - [Method 1 — Define wrapper after loading the MLflow model](#method-1--define-wrapper-after-loading-the-mlflow-model)
+    - [Method 2 - custom python models: Define wrapper during model logging](#method-2---custom-python-models-define-wrapper-during-model-logging)
+    - [Use MLflow Model Signature + Input Example](#use-mlflow-model-signature--input-example)
+  - [Deployment](#deployment)
+    - [Setting up a Batch Inference Job](#setting-up-a-batch-inference-job)
+    - [Creating an API Process for Inference](#creating-an-api-process-for-inference)
+
+
 ---
 
 ## Inference Wrapper
@@ -64,8 +78,7 @@ class InferenceWrapper:
 
 
 
-### Method 2 custom-python-models — Define wrapper during model logging (log_model with python_model=...)
-
+### Method 2 - custom python models: Define wrapper during model logging 
 
 MLflow allows you to package inference logic **inside the model** by implementing the  
 `PythonModel` interface. This makes the model fully self-contained.
@@ -125,8 +138,7 @@ Useful for:
 - API services that need strict validation  
 - Ensuring consistent inference across jobs, clusters, and teams  
 
----
-```
+
 
 ---
 
