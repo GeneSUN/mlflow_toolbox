@@ -2,15 +2,17 @@
 
 This article explains the basic script structure for an ML project using MLflow. It shows how training, evaluation, tuning, and model selection are organized into separate, easy-to-manage components.
 
+<img width="296" height="163" alt="Screenshot 2025-12-10 at 12 35 18 PM" src="https://github.com/user-attachments/assets/1b51608a-2115-47f4-b0da-e725a9a2b51c" />
 
-For simple notebook, check the [example](https://colab.research.google.com/drive/1sNPQNRpDo3Pg6JAw6hmBNRAjdMFvalbh#scrollTo=JZfA5OQFI_Bc)
+
+For simple notebook example, check this [colab notebook](https://colab.research.google.com/drive/1sNPQNRpDo3Pg6JAw6hmBNRAjdMFvalbh#scrollTo=JZfA5OQFI_Bc)
 
 ## Table of Contents
 
 - [Typical ML Project Structure with MLflow](#typical-ml-project-structure-with-mlflow)
-  - [1. Training script (train.py)](#1-training-script-trainpy)
-  - [2. Evaluation script (evaluatepy)](#2-evaluation-script-evaluatepy)
-  - [3. Hyperparameter tuning / advanced evaluation (tunepy)](#3-hyperparameter-tuning--advanced-evaluation-tunepy)
+  - [1. Training script (trainer.py)](#1-training-script-trainpy)
+  - [2. Evaluation script (evaluate.py)](#2-evaluation-script-evaluatepy)
+  - [3. Hyperparameter tuning / advanced evaluation (tune.py)](#3-hyperparameter-tuning--advanced-evaluation-tunepy)
   - [4. Model comparison and selection](#4-model-comparison-and-selection)
 
 
