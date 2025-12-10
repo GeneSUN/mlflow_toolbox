@@ -18,8 +18,8 @@ This guide explains
   - [Deployment](#deployment)
     - [Setting up a Batch Inference Job](#setting-up-a-batch-inference-job)
     - [Creating an API Process for Inference](#creating-an-api-process-for-inference)
-
-
+  - [Scaling Up Machine Learning Workflow](#scaling-up-machine-learning-workflow)
+    - [Integrating MLflow with Apache Spark](#integrating-mlflow-with-apache-spark)
 ---
 
 ## Inference Wrapper
@@ -183,6 +183,22 @@ A typical workflow:
 4. Return predictions to clients  
 <img width="738" height="239" alt="Screenshot 2025-12-09 at 7 46 05 PM" src="https://github.com/user-attachments/assets/1737be4a-b37b-47bb-8efc-04e130ddcf73" />
 
+
+## Scaling Up Machine Learning Workflow
+
+### Integrating MLflow with Apache Spark
+
+```python
+
+import mlflow
+logged_model = 'runs:/6815b44128e14df2b356c9db23b7f936/model'
+df = spark.read.format("csv").load("dbfs:/FileStore/shared_uploads/ input.csv")
+
+# Load model as a Spark UDF.
+loaded_model = mlflow.pyfunc.spark_udf(spark, model_uri=logged_model)
+df.withColumn('predictions', loaded_model()).collect()
+
+```
 
 
 
