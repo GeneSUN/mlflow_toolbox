@@ -47,18 +47,32 @@ After the search:
   - Inspect the relationship between hyperparameters and performance,
   - Select the best model configuration.
 
+<img width="1033" height="669" alt="Screenshot 2025-12-10 at 12 04 01 PM" src="https://github.com/user-attachments/assets/a8b6edf9-de08-431a-877e-6205e36bfb33" />
 
 
 ### 4. Model comparison and selection
 
-- Use MLflow UI to:
+**Use MLflow UI to:**
   - Filter runs by tags, parameters, or metrics.
   - Sort by the key metric (e.g., validation AUC).
   - Promote the best model to Staging or Production in the Model Registry.
 
-- Optionally, write a small Python script to:
-  - Programmatically query runs via mlflow.search_runs,
-  - Select the best run,
-  - Automatically register or transition the corresponding model.
-  
+<img width="1407" height="624" alt="Screenshot 2025-12-10 at 12 07 40 PM" src="https://github.com/user-attachments/assets/a085224d-4a00-4d19-a554-aa36f3840a2f" />
 
+
+**Optionally, write a small Python script to:**
+  - Programmatically query runs via mlflow.search_runs, Select the best run,
+  - Automatically register or transition the corresponding model.
+
+https://github.com/GeneSUN/mlflow_toolbox/blob/main/mlops_demo_project/evaluation/compare_runs.py
+
+```python
+
+    ....
+
+    runs = mlflow.search_runs(
+        experiment_ids=[exp.experiment_id],
+        order_by=[f"{metric} {'ASC' if ascending else 'DESC'}"],
+    )
+
+```
