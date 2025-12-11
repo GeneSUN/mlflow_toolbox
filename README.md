@@ -17,47 +17,6 @@ MLflow Models
            └── Stages (None, Staging, Production, Archived)
 ```
 
-```
-mlops_demo_project/
-│
-├── config/
-│   ├── train.yaml
-│   ├── eval.yaml
-│   ├── inference.yaml
-│   └── monitoring.yaml
-│
-├── modeling/
-│   ├── trainer.py
-│   ├── data_loader.py
-│   └── preprocess.py
-│
-├── evaluation/
-│   ├── evaluate_model.py
-│   ├── compare_runs.py
-│   ├── validate_schema.py
-│   └── tune.py
-│
-├── inference/
-│   ├── inference_wrapper.py
-│   └── api_server.py  # FastAPI server (optional)
-│
-├── monitoring/
-│   ├── drift_monitor.py
-│   ├── prediction_monitor.py
-│   └── data_quality.py
-│
-├── pipelines/
-│   ├── train_pipeline.py
-│
-├── tests/
-│   ├── ...
-│
-│
-├── requirements.txt
-├── Dockerfile
-└── README.md
-
-```
 <img width="1141" height="719" alt="Untitled" src="https://github.com/user-attachments/assets/b26ec057-4c40-4302-8f48-2c1bedf6a547" />
 
 
