@@ -25,7 +25,7 @@ $$ P_t(X) \neq P_{t+\Delta}(X) $$
 
 - Even if the model parameters haven’t changed, it will see “new kinds” of inputs it wasn’t trained on.
 
-**Your house price example**
+**house price example**
 
 - Features: location, population density, neighborhood income, etc.
 - Over several years:
@@ -35,7 +35,7 @@ $$ P_t(X) \neq P_{t+\Delta}(X) $$
 - The model is still the same, but the **feature distribution** has shifted.  
 
 
-**Your churn-duration example**
+**churn-duration example**
 
 - Feature: `tenure` or “months since subscription”.
 - Initially:
@@ -62,7 +62,7 @@ $$ P_t(Y) \neq P_{t+\Delta}(Y) $$
 
 - Even if X looks similar, the world’s behavior changes, so the realized labels shift.
 
-**Your inventory forecasting example**
+**inventory forecasting example**
 
 - Task: forecast inventory usage / cargo volume.
 - Inputs X: historical demand, promotions, seasonality, maybe macro indicators.
@@ -89,7 +89,7 @@ $$ P_t(Y|X) \neq P_{t+\Delta}(Y|X) $$
 
 - **Model drift**: the model’s predictions Yᵖʳᵉᵈ (and its error profile) degrade over time because it no longer matches the current concept.
 
-**Your 4G vs 5G usage example**
+**4G vs 5G usage example**
 
 - You built a **5G data usage forecasting model**.
 - Then:
@@ -137,7 +137,7 @@ In MLflow, you can log:
 
 Even if the model and data are perfect, the **system can fail operationally**.
 
-**Your real-time anomaly detection example**
+**real-time anomaly detection example**
 
 - New network performance logs arrive every **5 minutes**.
 - Your pipeline must:
