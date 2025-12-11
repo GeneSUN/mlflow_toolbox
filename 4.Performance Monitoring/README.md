@@ -25,7 +25,7 @@ $$ P_t(X) \neq P_{t+\Delta}(X) $$
 
 - Even if the model parameters haven’t changed, it will see “new kinds” of inputs it wasn’t trained on.
 
-**house price example**
+### house price example
 
 - Features: location, population density, neighborhood income, etc.
 - Over several years:
@@ -35,7 +35,7 @@ $$ P_t(X) \neq P_{t+\Delta}(X) $$
 - The model is still the same, but the **feature distribution** has shifted.  
 
 
-**churn-duration example**
+### churn-duration example
 
 - Feature: `tenure` or “months since subscription”.
 - Initially:
@@ -62,7 +62,7 @@ $$ P_t(Y) \neq P_{t+\Delta}(Y) $$
 
 - Even if X looks similar, the world’s behavior changes, so the realized labels shift.
 
-**inventory forecasting example**
+### inventory forecasting example
 
 - Task: forecast inventory usage / cargo volume.
 - Inputs X: historical demand, promotions, seasonality, maybe macro indicators.
@@ -89,7 +89,7 @@ $$ P_t(Y|X) \neq P_{t+\Delta}(Y|X) $$
 
 - **Model drift**: the model’s predictions Yᵖʳᵉᵈ (and its error profile) degrade over time because it no longer matches the current concept.
 
-**4G vs 5G usage example**
+### 4G vs 5G usage example
 
 - You built a **5G data usage forecasting model**.
 - Then:
@@ -107,7 +107,7 @@ You detect this by monitoring:
 - **Residuals** (Yᵗʳᵘᵉ − Yᵖʳᵉᵈ): does the error suddenly become biased or more volatile?
 - Performance curves over time: accuracy, RMSE, AUROC, etc., on recent data.
 
-**Anomaly detection / fraud example**
+### Anomaly detection / fraud example
 
 - Unsupervised:
   - You train an anomaly detector on historical “normal” behavior.
@@ -137,7 +137,7 @@ In MLflow, you can log:
 
 Even if the model and data are perfect, the **system can fail operationally**.
 
-**real-time anomaly detection example**
+### real-time anomaly detection example
 
 - New network performance logs arrive every **5 minutes**.
 - Your pipeline must:
@@ -165,7 +165,7 @@ In MLflow, you can:
 
 ## Evidently
 
-**eval workflow using the Evidently library**
+### eval workflow using the Evidently library
 
 - https://docs.evidentlyai.com/docs/library/evaluations_overview
 - https://docs.evidentlyai.com/quickstart_ml
@@ -173,12 +173,12 @@ In MLflow, you can:
 
 <img width="429" height="1259" alt="Untitled" src="https://github.com/user-attachments/assets/177c31f0-8904-487b-968a-c92da5a7d768" />
 
-**Log in Mlflow**
+### Log in Mlflow
 
 <img width="1446" height="673" alt="Screenshot 2025-12-11 at 11 40 39 AM" src="https://github.com/user-attachments/assets/090bd600-3e8b-4c2a-a290-4e0fc28ef09d" />
 
 
-**Example of Data Drift Report**
+### Example of Data Drift Report
 - https://colab.research.google.com/drive/1ui09fKTL7jaMrpEIXBn3l9mKLAVDXGBp#scrollTo=gELZirCL6ZhO
 
 
