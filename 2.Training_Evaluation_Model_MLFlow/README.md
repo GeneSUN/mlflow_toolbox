@@ -1,6 +1,22 @@
-## Typical ML Project Structure with MLflow
+# Typical ML Project Structure with MLflow
 
-### 1. Training script (`train.py`)
+This article explains the basic script structure for an ML project using MLflow. It shows how training, evaluation, tuning, and model selection are organized into separate, easy-to-manage components.
+
+<img width="296" height="163" alt="Screenshot 2025-12-10 at 12 35 18 PM" src="https://github.com/user-attachments/assets/1b51608a-2115-47f4-b0da-e725a9a2b51c" />
+
+
+For simple notebook example, check this [colab notebook](https://colab.research.google.com/drive/1sNPQNRpDo3Pg6JAw6hmBNRAjdMFvalbh#scrollTo=JZfA5OQFI_Bc)
+
+## Table of Contents
+
+- [Typical ML Project Structure with MLflow](#typical-ml-project-structure-with-mlflow)
+  - [1. Training script (trainer.py)](#1-training-script-trainpy)
+  - [2. Evaluation script (evaluate.py)](#2-evaluation-script-evaluatepy)
+  - [3. Hyperparameter tuning / advanced evaluation (tune.py)](#3-hyperparameter-tuning--advanced-evaluation-tunepy)
+  - [4. Model comparison and selection](#4-model-comparison-and-selection)
+
+
+## 1. Training script (`train.py`)
 
 - Load and preprocess data.
 - Define and train the model.
@@ -20,37 +36,50 @@ The model itself (and optionally register it in the Model Registry and set a sta
 Optionally save predictions (on validation / test data) for later use by an evaluation script.
 
 
-### 2. Evaluation script (evaluate.py)
+## 2. Evaluation script (evaluate.py)
 
+```python
+    with mlflow.start_run(run_name="evaluate_model") as run:
+        mlflow.set_tag("mlflow.runName", "evaluate_model")
+        df = pd.read_csv("data/predictions/test_predictions.csv")
+        metrics = classification_metrics(df)
+        mlflow.log_metrics(metrics)
+```
 
 1. Load Either the saved predictions or
 2. Compute and Log evaluation metrics (e.g., AUC, F1, RMSE), artifacts (plots, reports) to MLflow as another run.
 
+For Simplicity, you can embed evaluation within trainer.py.
+- [example](https://github.com/GeneSUN/NetSignalOutlierPipeline/tree/main/src/modeling/global_autoencoder#high-level-architecture)
+
+## 3. Hyperparameter tuning / advanced evaluation (tune.py)
 
 
-### 3. Hyperparameter tuning / advanced evaluation (tune.py)
+```python
+    with mlflow.start_run(run_name="Main_HPO_Run") as main_run:
+        with mlflow.start_run(nested=True):
+```
 
-- Define an objective function that:
-  - Takes a set of hyperparameters as input,
+1. Define search space
+2. Create objective function, embedding nested run:
   - Trains a model (possibly a lightweight version),
-  - Evaluates on a validation set,
+  - Evaluates a set of hyperparameters on a validation set,
   - Logs everything to MLflow inside its own mlflow.start_run(),
-  - Returns a scalar score to maximize or minimize.
+3. Use a search method (grid search, random search, Optuna, Hyperopt, etc.) to call the objective function on many hyperparameter combinations.
+  - ```python from hyperopt import fmin, tpe, hp, STATUS_OK, Trials```, ```from sklearn.model_selection import cross_val_score```
 
-- Use a search method (grid search, random search, Optuna, Hyperopt, etc.) to call the objective function on many hyperparameter combinations.
-  - Optionally, create a parent run and log each trial as a nested run under it.
 
-After the search:
+- full script template: https://github.com/GeneSUN/mlflow_toolbox/blob/main/mlops_demo_project/evaluation/tune.py
 
-- Use the MLflow UI or a small analysis script to:
-  - Compare runs by metrics,
+
+4. Use the MLflow UI or a small analysis script to:
+  - Compare runs by metrics, select the best model configuration.
   - Inspect the relationship between hyperparameters and performance,
-  - Select the best model configuration.
 
 <img width="1033" height="669" alt="Screenshot 2025-12-10 at 12 04 01 PM" src="https://github.com/user-attachments/assets/a8b6edf9-de08-431a-877e-6205e36bfb33" />
 
 
-### 4. Model comparison and selection
+## 4. Model comparison and selection
 
 **Use MLflow UI to:**
   - Filter runs by tags, parameters, or metrics.
