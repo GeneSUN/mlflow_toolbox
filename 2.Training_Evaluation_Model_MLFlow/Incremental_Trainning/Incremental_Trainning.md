@@ -1,4 +1,4 @@
-# incremental learning (a.k.a. online learning / continual learning).
+# Incremental learning (a.k.a. online learning / continual learning).
 
 ## 1. Comprehensive Method: retrain everytime adding new data
 step 1. Initial Training (Full Historical Data)
