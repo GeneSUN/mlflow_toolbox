@@ -19,8 +19,9 @@ new_model.fit(df_all)
 
 Strength of this method:
 Most ML models cannot be fine-tuned using new data unless you retrain from scratch.
-- Incremental training requires very specific model properties.
-- Many classical ML models are not designed to continue training.
+- Incremental training requires very specific model properties, Many classical ML models are not designed to continue training.
+- You can emphasize recent behavior by assigning higher weight to newer data or downsampling older historical records.
+- When data volume is very large and training is efficient, retraining the model from scratch may be simpler and cost-effective.
 
 | Model                                                     | Incremental?         | Why not                                                                 |
 | --------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------- |
@@ -58,6 +59,9 @@ Deep models can be incrementally trained if:
 - AND the optimizer state
 - AND learning rate schedule if needed
 
+- https://docs.pytorch.org/tutorials/beginner/saving_loading_models.html?utm_source=chatgpt.com
+- https://mlflow.org/docs/latest/api_reference/python_api/mlflow.pytorch.html
+- https://github.com/GeneSUN/NetSignalOutlierPipeline/blob/main/src/modeling/global_autoencoder/readme.md#incremental-trainning
 
 ### ✔ C. XGBoost / LightGBM (but only in special modes)
 
