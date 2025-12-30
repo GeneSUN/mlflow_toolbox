@@ -27,7 +27,6 @@ Most ML models cannot be fine-tuned using new data unless you retrain from scrat
 | --------------------------------------------------------- | -------------------- | ----------------------------------------------------------------------- |
 | **Random Forest**                                         | ❌ No                 | Trees are fixed after training; new data requires rebuilding the forest |
 | **Decision Trees**                                        | ❌ No                 | The splits are not updateable once created                              |
-| **XGBoost / LightGBM / CatBoost (default)**               | ❌ No                 | Models are additive but not updateable after training ends              |
 | **SVM (RBF kernel)**                                      | ❌ No                 | Support vectors must be recomputed globally                             |
 | **KNN**                                                   | ⚠️ Yes but expensive | Adding points is trivial but inference becomes slow                     |
 | **Most deep learning models trained without checkpoints** | ❌ No                 | You cannot “continue training” without original optimizer state         |
