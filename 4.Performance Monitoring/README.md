@@ -13,6 +13,17 @@ Below is a refined version of what you described, with your examples structured 
 [Colab Notebook Example](https://colab.research.google.com/drive/1sNPQNRpDo3Pg6JAw6hmBNRAjdMFvalbh#scrollTo=seuQanAMo2Dl)
 
 
+## Table of Contents
+
+
+1. [Feature Drift (Input / Data Drift)](#1-feature-drift-input--data-drift)
+2. [Target Drift (Label / Response Drift)](#2-target-drift-label--response-drift)
+3. [Model & Concept Drift](#3-model--concept-drift-relationship-between-x-and-y)
+4. [Infrastructure & Operational Metrics](#4-infrastructure--operational-metrics)
+5. [Using Evidently for Drift & Evaluation](#evidently)
+8. [Colab Notebooks & Resources](#colab-notebooks--resources)
+
+
 ---
 
 ## 1. Feature drift (input / data drift)
