@@ -111,7 +111,7 @@ mlflow.pyfunc.log_model(
 - When serving with MLflow Models, MLflow Server, Docker, or Batch Inference.
 
 Reference: https://mlflow.org/docs/latest/ml/model/#deploy-mlflow-models
-
+Example: https://github.com/GeneSUN/NetSignalOutlierPipeline/tree/main/src/modeling/global_autoencoder#3-inference_wrapperpy--production-inference-layer
 
 
 ## Use MLflow Model Signature + Input Example
